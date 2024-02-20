@@ -73,11 +73,40 @@ public class GamePanel extends JPanel implements Runnable{
 			ball.setYDirection(-ball.yVelocity);
 		}
 		
+		// bounce ball of paddle
+		if(ball.intersects(paddle1)) {
+			ball.xVelocity = Math.abs(ball.xVelocity);
+			ball.xVelocity++;
+			if(ball.yVelocity > 0)
+				ball.yVelocity++;
+			else
+				ball.yVelocity--;
+			ball.setXDirection(ball.xVelocity);
+			ball.setYDirection(ball.yVelocity);
+		}
+		if(ball.intersects(paddle2)) {
+			ball.xVelocity = Math.abs(ball.xVelocity);
+			ball.xVelocity++;
+			if(ball.yVelocity > 0)
+				ball.yVelocity++;
+			else
+				ball.yVelocity--;
+			ball.setXDirection(-ball.xVelocity);
+			ball.setYDirection(ball.yVelocity);
+		}
+		
 		// stops paddles at window edges
-		if(paddle1.y<=0) paddle1.y = 0;
-		if(paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) paddle1.y = GAME_HEIGHT-PADDLE_HEIGHT;
-		if(paddle2.y<=0) paddle2.y = 0;
-		if(paddle2.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) paddle2.y = GAME_HEIGHT-PADDLE_HEIGHT;
+		if(paddle1.y<=0) 
+			paddle1.y = 0;
+		
+		if(paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) 
+			paddle1.y = GAME_HEIGHT-PADDLE_HEIGHT;
+		
+		if(paddle2.y<=0) 
+			paddle2.y = 0;
+		
+		if(paddle2.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) 
+			paddle2.y = GAME_HEIGHT-PADDLE_HEIGHT;
 	}
 	
 	public void run() {
