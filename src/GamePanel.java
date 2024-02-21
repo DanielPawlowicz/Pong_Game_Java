@@ -55,6 +55,7 @@ public class GamePanel extends JPanel implements Runnable{
 		paddle1.draw(g);
 		paddle2.draw(g);
 		ball.draw(g);
+		score.draw(g);
 	}
 	
 	public void move() {
